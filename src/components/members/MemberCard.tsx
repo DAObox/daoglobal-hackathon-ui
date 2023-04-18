@@ -32,7 +32,7 @@ export default function MemberCard({ avatar, address, balance, power }: MemberCa
                         </div>
                         <p className="text-start text-white">Voting power: {power}</p>
                     </div>
-                    <Link href={"/"} className="flex items-center justify-start space-x-0.5 max-w-fit">
+                    <Link href={"/members/member"} className="flex items-center justify-start space-x-0.5 max-w-fit">
                         <div>
                             <p className="text-sm text-start text-daoboxg">View member profile</p>
                         </div>
