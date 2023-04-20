@@ -1,3 +1,4 @@
-export const daoAddressOrEns = "0x6f07aa7af27e0e06a08a1a17e04c4b0eb11300ab";
-export const votingPluginAddress = "0x8eaf189dbe3524667d25684645aba1c71c02d8db";
-export const daoTokenAddress = "0xdd6067e741e79ea707d5185f72e52bc6a9784fd1";
+export const daoAddressOrEns = "0x9e084d24781a8851225a2697a11079287faf8413";
+export const votingPluginAddress = "0x7abe9ba7fbd92d9b3774d80c4363b854a5fa5ac6";
+export const adminPluginAddress = "0xcaf29873862e4dad2a3e6dfa896b80b798c809c8";
+export const daoTokenAddress = "0x03bD27B6FE4f0B3F2C2C9a4289cA2bfcE1DDE95c";
