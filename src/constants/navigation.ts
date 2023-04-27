@@ -20,7 +20,7 @@ export const navigation = () => {
       name: "Members",
       href: "/members",
       icon: UsersIcon,
-      current: getWindow()?.location.pathname == "/members",
+      current: getWindow()?.location.pathname == "/members" || getWindow()?.location.pathname == "/members/member",
     },
     {
       name: "Treasury",
