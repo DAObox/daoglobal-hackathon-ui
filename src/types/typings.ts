@@ -19,3 +19,7 @@ export interface DelegateTableType {
         image: string,
     }[]
 }
+
+export interface Tabs {
+    tab: string
+}

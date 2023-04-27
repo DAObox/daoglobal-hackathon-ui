@@ -1,11 +1,13 @@
-import MemberCardList from "@components/members/MemberCardList";
 import CreateProposalCard from "@components/treasury/CreateProposalCard";
+import TokenTab from "@components/treasury/TokensTab";
+import TransactionsTab from "@components/treasury/TransactionsTab";
 import TreasuryTabs from "@components/treasury/TreasuryTabs";
-import { Tab, TabList } from "@tremor/react"
 import { type NextPage } from "next";
 import Head from "next/head";
+import { useReadLocalStorage } from "usehooks-ts";
 
 const Treasury: NextPage = () => {
+  const tabs = useReadLocalStorage("tab")
   return (
     <>
       <Head>
@@ -17,7 +19,9 @@ const Treasury: NextPage = () => {
         <div className="w-full max-w-7xl space-y-6">
           <CreateProposalCard />
           <TreasuryTabs />
-          <MemberCardList />
+          {
+            tabs == "tokens" ? <TokenTab /> : <TransactionsTab />
+          }
         </div>
       </main>
     </>
