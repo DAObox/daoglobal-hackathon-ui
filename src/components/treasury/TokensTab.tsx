@@ -60,6 +60,14 @@ export default function TokenTab() {
                         </div>
                     </li>
                 ))}
+                <button className="btn btn-xs btn-md remove-text-transform btn-neutral text-white max-w-fit sm:w-auto mt-4">
+                    <div className="flex items-center">
+                        <span>See all tokens</span>
+                        <span>
+                            <ChevronRightIcon className="w-6 h-6" />
+                        </span>
+                    </div>
+                </button>
             </ul>
         </div>
     )
