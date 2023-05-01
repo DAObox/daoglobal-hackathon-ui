@@ -30,7 +30,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   useEffect(() => {
     setMounted(true);
     currentMode();
-  }, [currentMode()]);
+  }, [mode]);
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider
