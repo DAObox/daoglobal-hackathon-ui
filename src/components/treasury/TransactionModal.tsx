@@ -4,7 +4,7 @@ import { useRef } from "react";
 import TransactionModalCard from "./TransactionModalCard";
 
 export default function TransactionModal() {
-    const ref: any = useRef(null)
+    const ref = useRef<HTMLLabelElement>(null)
     return(
         <>
             <input type="checkbox" id="my-modal-6" className="modal-toggle" />
@@ -39,7 +39,7 @@ export default function TransactionModal() {
                             <TransactionModalCard />
                         </div>
                     </div>
-                    <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+                    <p className="py-4">You{"'"}ve been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
                     <div className="modal-action">
                     </div>
                 </div>

@@ -1,11 +1,11 @@
 import DepositIcon from "@components/icons/deposit";
 import TransactionModal from "./TransactionModal";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
-import { useRef } from "react";
+import { MutableRefObject, useRef } from "react";
 
 export default function TransactionCard() {
 
-    const ref: any = useRef(null)
+    const ref = useRef<HTMLLabelElement>(null)
 
     return(
         <div className="flex space-x-1.5 justify-center w-full">

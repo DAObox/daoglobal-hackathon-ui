@@ -1,4 +1,4 @@
-import { useLocalStorage, useReadLocalStorage } from "usehooks-ts"
+import { useLocalStorage } from "usehooks-ts"
 
 export default function TreasuryTabs() {
     const [tab, setTab] = useLocalStorage("tab", "tokens")
@@ -6,11 +6,11 @@ export default function TreasuryTabs() {
         <div className="flex space-x-2.5">
             <button
                 className={`hover:underline hover:underline-offset-8 hover:decoration-daoboxg decoration-4 font-semibold 
-                ${tab == "tokens" && "underline underline-offset-8 decoration-daoboxg decoration-4"}`}
+                ${tab == "tokens" || "" ? "underline underline-offset-8 decoration-daoboxg decoration-4" : ""}`}
                 onClick={() => setTab("tokens")}>Tokens</button>
             <button
                 className={`hover:underline hover:underline-offset-8 hover:decoration-daoboxg decoration-4 font-semibold 
-                ${tab == "transactions" && "underline underline-offset-8 decoration-daoboxg decoration-4"}`}
+                ${tab == "transactions" ? "underline underline-offset-8 decoration-daoboxg decoration-4" : ""}`}
                 onClick={() => setTab("transactions")}>Transactions</button>
         </div>
     )
