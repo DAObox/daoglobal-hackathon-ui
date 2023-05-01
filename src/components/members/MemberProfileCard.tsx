@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Button from "./Button";
+import Button from "../buttons/Button";
 import { truncateAddress } from "@utils/addresses";
 import { ClipboardDocumentIcon, CheckBadgeIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
@@ -56,6 +56,7 @@ export default function MemberProfileCard() {
             clickFunction={() => {
               write?.();
             }}
+            icon={<></>}
           />
         </div>
       </div>
