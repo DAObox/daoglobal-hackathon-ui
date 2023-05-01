@@ -23,10 +23,8 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   function currentMode() {
     if (mode === "darkmode") {
       return darkTheme();
-    } else if (mode === "lightmode") {
-      return lightTheme();
     } else {
-      return darkTheme();
+      return lightTheme();
     }
   }
   useEffect(() => {
