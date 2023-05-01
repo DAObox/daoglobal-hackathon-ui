@@ -1,4 +1,4 @@
-import CreateProposalCard from "@components/treasury/CreateProposalCard";
+import CreateProposalCard from "@components/proposals/CreateProposalCard";
 import TokenTab from "@components/treasury/TokensTab";
 import TransactionsTab from "@components/treasury/TransactionsTab";
 import TreasuryTabs from "@components/treasury/TreasuryTabs";
