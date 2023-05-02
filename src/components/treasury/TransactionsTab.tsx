@@ -1,6 +1,6 @@
 import { ChevronRightIcon } from "@heroicons/react/24/outline"
 import TransactionCard from "./TransactionCard";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ethers } from "ethers";
 import { daoAddressOrEns } from "@constants/daoConfig";
 import { TransactionResponse } from "alchemy-sdk";
@@ -11,13 +11,11 @@ export default function TransactionsTab() {
 
       const etherscanProvider = new ethers.providers.EtherscanProvider()
 
-      useEffect(() => {
-            etherscanProvider.getHistory(daoAddressOrEns).then(res => { return res }).then((history) => {
-              console.log(history.slice(0, 10))
-              setData(history.slice(0, 10))
-              return history
-            }).catch(error => console.log(error));
-      })
+      etherscanProvider.getHistory(daoAddressOrEns).then(res => { return res }).then((history) => {
+        console.log(history.slice(0, 10))
+        setData(history.slice(0, 10))
+        return history
+      }).catch(error => console.log(error));
 
     return(
         <div>
