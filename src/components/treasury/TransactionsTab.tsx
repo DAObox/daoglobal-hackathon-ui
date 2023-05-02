@@ -8,7 +8,7 @@ export default function TransactionsTab() {
 
   const [data, setData] = useState([])
 
-      let etherscanProvider = new ethers.providers.EtherscanProvider()
+      const etherscanProvider = new ethers.providers.EtherscanProvider()
 
       etherscanProvider.getHistory(daoAddressOrEns).then((history: any) => {
         console.log(history.slice(0, 10))

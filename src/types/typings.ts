@@ -25,7 +25,7 @@ export interface Tabs {
 }
 
 export interface TransactionCardType {
-    type: String,
+    type: string,
     timestamp: number,
-    value: String
+    value: string
 }
