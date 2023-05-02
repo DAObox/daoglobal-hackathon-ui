@@ -10,7 +10,7 @@ export default function TransactionsTab() {
 
       let etherscanProvider = new ethers.providers.EtherscanProvider()
 
-      etherscanProvider.getHistory("0xA3Db2Cb625bAe87D12AD769C47791a04BA1e5b29").then((history: any) => {
+      etherscanProvider.getHistory(daoAddressOrEns).then((history: any) => {
         console.log(history.slice(0, 10))
         setData(history.slice(0, 10))
         return history
