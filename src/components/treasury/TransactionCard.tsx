@@ -16,7 +16,7 @@ export default function TransactionCard({ type, timestamp, value } : Transaction
             <div className="w-full flex justify-between">
                 <div>
                     <p className="font-semibold">{type}</p>
-                    <Moment fromNow>{date}</Moment>
+                    <Moment fromNow date={date} />
                 </div>
                 <div className="w-fit space-x-1.5 flex">
                     <div className="w-fit h-full flex space-x-2">
