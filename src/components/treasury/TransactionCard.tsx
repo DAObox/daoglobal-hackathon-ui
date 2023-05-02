@@ -3,12 +3,12 @@ import TransactionModal from "./TransactionModal";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import { useRef } from "react";
 import { TransactionCardType } from "types/typings";
-import moment from "moment"
+import Moment from "react-moment"
 
 export default function TransactionCard({ type, timestamp, value } : TransactionCardType) {
 
     const ref = useRef<HTMLLabelElement>(null)
-    const date = moment.unix(timestamp)
+    const date = new Date(timestamp)
 
     return(
         <div className="flex space-x-1.5 justify-center w-full">
@@ -16,7 +16,7 @@ export default function TransactionCard({ type, timestamp, value } : Transaction
             <div className="w-full flex justify-between">
                 <div>
                     <p className="font-semibold">{type}</p>
-                    <p className="text-sm">{date.toString()}</p>
+                    <Moment fromNow>{date}</Moment>
                 </div>
                 <div className="w-fit space-x-1.5 flex">
                     <div className="w-fit h-full flex space-x-2">

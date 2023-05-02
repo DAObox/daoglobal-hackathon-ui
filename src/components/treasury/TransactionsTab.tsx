@@ -2,6 +2,7 @@ import { ChevronRightIcon } from "@heroicons/react/24/outline"
 import TransactionCard from "./TransactionCard";
 import { useState } from "react";
 import { ethers } from "ethers";
+import { daoAddressOrEns } from "@constants/daoConfig";
 
 export default function TransactionsTab() {
 
@@ -34,10 +35,9 @@ export default function TransactionsTab() {
         },
       ];
 
-      let address = "0xed5af388653567af2f388e6224dc7c4b3241c544";
       let etherscanProvider = new ethers.providers.EtherscanProvider()
 
-      etherscanProvider.getHistory(address).then((history: any) => {
+      etherscanProvider.getHistory(daoAddressOrEns).then((history: any) => {
         console.log(history.slice(0, 10))
         setData(history.slice(0, 10))
         return history
@@ -49,7 +49,7 @@ export default function TransactionsTab() {
                 {data?.map((item: any, index: any) => (
                     <li key={index} className="px-4 py-4 sm:px-0">
                         {/* Your content */}
-                        <TransactionCard type={item.from == address ? "Sent" : "Deposit"} timestamp={item.timestamp} value={item.value} />
+                        <TransactionCard type={item.from == daoAddressOrEns ? "Sent" : "Deposit"} timestamp={item.timestamp} value={item.value} />
                     </li>
                 ))}
                 <button className="btn btn-xs btn-md remove-text-transform btn-neutral text-white max-w-fit sm:w-auto mt-4">
