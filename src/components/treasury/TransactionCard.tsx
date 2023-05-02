@@ -1,19 +1,22 @@
 import DepositIcon from "@components/icons/deposit";
 import TransactionModal from "./TransactionModal";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
-import { MutableRefObject, useRef } from "react";
+import { useRef } from "react";
+import { TransactionCardType } from "types/typings";
+import moment from "moment"
 
-export default function TransactionCard() {
+export default function TransactionCard({ type, timestamp, value } : TransactionCardType) {
 
     const ref = useRef<HTMLLabelElement>(null)
+    const date = moment.unix(timestamp)
 
     return(
         <div className="flex space-x-1.5 justify-center w-full">
             <div><DepositIcon /></div>
             <div className="w-full flex justify-between">
                 <div>
-                    <p className="font-semibold">Deposit</p>
-                    <p className="text-sm">last Monday at 2:00 PM</p>
+                    <p className="font-semibold">{type}</p>
+                    <p className="text-sm">{date.toString()}</p>
                 </div>
                 <div className="w-fit space-x-1.5 flex">
                     <div className="w-fit h-full flex space-x-2">

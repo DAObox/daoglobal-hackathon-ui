@@ -1,7 +1,8 @@
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { truncateAddress } from "@utils/addresses";
 import { useRef } from "react";
 import TransactionModalCard from "./TransactionModalCard";
+import Button from "@components/buttons/Button";
 
 export default function TransactionModal() {
     const ref = useRef<HTMLLabelElement>(null)
@@ -21,7 +22,8 @@ export default function TransactionModal() {
                                     <p>From</p>
                                 </div>
                                 <div>
-                                    <input type="text" placeholder="Type here" className="border border-border w-full max-w-xs rounded-lg"
+                                    <input type="text" placeholder="Type here" className="border border-border w-full max-w-xs rounded-lg 
+                                    focus:border-black focus:ring-border focus:border focus:ring-0"
                                     value={truncateAddress("0x5C04F69c9603A808BF4157Ef959F1Ed1e16c0F73")} readOnly />
                                 </div>
                             </div>
@@ -30,7 +32,8 @@ export default function TransactionModal() {
                                     <p>To</p>
                                 </div>
                                 <div>
-                                    <input type="text" placeholder="Type here" className="border border-border w-full max-w-xs rounded-lg"
+                                    <input type="text" placeholder="Type here" className="border border-border w-full max-w-xs rounded-lg 
+                                    focus:border-black focus:ring-border focus:border focus:ring-0"
                                     value={truncateAddress("0x5C04F69c9603A808BF4157Ef959F1Ed1e16c0F73")} readOnly />
                                 </div>
                             </div>
@@ -38,9 +41,9 @@ export default function TransactionModal() {
                         <div className="">
                             <TransactionModalCard />
                         </div>
-                    </div>
-                    <p className="py-4">You{"'"}ve been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-                    <div className="modal-action">
+                        <div>
+                            <Button text="View on blocker explorer" icon={<><PlusIcon className="w-6 h-6 text-neutral" /></>} clickFunction={() => {}} />
+                        </div>
                     </div>
                 </div>
                 <label htmlFor="my-modal-6" className="btn hidden" ref={ref}>Yay!</label>

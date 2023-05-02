@@ -23,3 +23,9 @@ export interface DelegateTableType {
 export interface Tabs {
     tab: string
 }
+
+export interface TransactionCardType {
+    type: String,
+    timestamp: number,
+    value: String
+}
