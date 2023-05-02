@@ -42,7 +42,9 @@ export default function TransactionModal() {
                             <TransactionModalCard />
                         </div>
                         <div>
-                            <Button text="View on blocker explorer" icon={<><PlusIcon className="w-6 h-6 text-neutral" /></>} clickFunction={() => {}} />
+                            <Button text="View on blocker explorer" icon={<><PlusIcon className="w-6 h-6 text-neutral" /></>} clickFunction={() => {
+                                console.log("clicked")
+                            }} />
                         </div>
                     </div>
                 </div>
