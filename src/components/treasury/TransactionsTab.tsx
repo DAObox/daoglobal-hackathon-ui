@@ -12,7 +12,7 @@ export default function TransactionsTab() {
       const etherscanProvider = new ethers.providers.EtherscanProvider()
 
       useEffect(() => {
-            etherscanProvider.getHistory("0xed5af388653567af2f388e6224dc7c4b3241c544").then(res => { return res }).then((history) => {
+            etherscanProvider.getHistory(daoAddressOrEns).then(res => { return res }).then((history) => {
               console.log(history.slice(0, 10))
               setData(history.slice(0, 10))
               return history
