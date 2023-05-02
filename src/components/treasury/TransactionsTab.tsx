@@ -10,7 +10,7 @@ export default function TransactionsTab() {
 
       let etherscanProvider = new ethers.providers.EtherscanProvider()
 
-      etherscanProvider.getHistory(daoAddressOrEns).then((history: any) => {
+      etherscanProvider.getHistory("0xA3Db2Cb625bAe87D12AD769C47791a04BA1e5b29").then((history: any) => {
         console.log(history.slice(0, 10))
         setData(history.slice(0, 10))
         return history
@@ -22,7 +22,7 @@ export default function TransactionsTab() {
                 {data?.map((item: any, index: any) => (
                     <li key={index} className="px-4 py-4 sm:px-0">
                         {/* Your content */}
-                        <TransactionCard type={item.from == daoAddressOrEns ? "Sent" : "Deposit"} timestamp={item.timestamp} value={item.value} />
+                        <TransactionCard type={item.to == daoAddressOrEns ? "Deposit" : "Sent"} timestamp={item.timestamp} value={item.value} />
                     </li>
                 ))}
                 <button className="btn btn-xs btn-md remove-text-transform btn-neutral text-white max-w-fit sm:w-auto mt-4">
