@@ -82,7 +82,7 @@ export const ProposalsTab = () => {
             <Tab.Panel key={tab} className="grid grid-cols-2 gap-4">
               {filteredProposals?.length ? (
                 filteredProposals.map((proposal) => (
-                  <ProposalCard key={proposal.id} {...proposal} />
+                  <ProposalCard key={proposal.id} {...proposal} path="lens-voting" />
                 ))
               ) : (
                 <p key={tab}>No {tab === "All" ? "" : tab} Proposals</p>
