@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import Head from "next/head";
@@ -12,6 +14,9 @@ import { useRouter } from "next/router";
 import { useOpCollateral, useProposerFreeCollateral } from "@hooks/op/read";
 import { BigNumber, ethers } from "ethers";
 import { useWithdrawCollateral } from "@hooks/op/write";
+import { Mailchain } from "@mailchain/sdk";
+import { mailchainSecretRecoveryPhrase, mailchainSender } from "@constants/daoConfig";
+import { toast } from "react-toastify";
 
 const Member = () => {
   const { query } = useRouter();
@@ -47,7 +52,7 @@ const Member = () => {
   );
 };
 
-function Stats({ member }: { member: String }) {
+function Stats({ member }: { member: string }) {
   const { token } = useBalanceAndPower(member as Address);
   const { freeCollateral } = useProposerFreeCollateral(member as Address);
   const { write, status } = useWithdrawCollateral(freeCollateral as BigNumber);
@@ -87,6 +92,26 @@ interface ProfileProps {
 }
 
 const ProfileBar: React.FC<ProfileProps> = ({ profile, member }) => {
+  const { write } = useDelegateNFT(member as Address);
+  const handleDelegate = async () => {
+    write?.();
+    const mailchainInstance = Mailchain.fromSecretRecoveryPhrase(mailchainSecretRecoveryPhrase);
+    const { data, error } = await mailchainInstance.sendMail({
+      from: mailchainSender,
+      to: [`${member as Address}@ethereum.mailchain.com`],
+      subject: `A delegation just occurred to you`,
+      content: {
+        text: "Delegation",
+        html: `<p>Your lens profile has received voting power!</p>`,
+      },
+    });
+    if (error) {
+      toast.warn("Could not notify proposer");
+      return;
+    }
+
+    console.log({ data });
+  };
   return (
     <div className="w-full flex-col justify-center align-middle">
       {profile ? (
@@ -95,7 +120,15 @@ const ProfileBar: React.FC<ProfileProps> = ({ profile, member }) => {
           <Stats member={member} />
         </div>
       ) : (
-        <div className="text-error">Profile does not exist</div>
+        <>
+          <div className="text-error">Profile does not exist</div>
+          <button
+            className="glass btn-block btn-md btn mt-6 text-primary-focus"
+            onClick={() => handleDelegate()}
+          >
+            delegate
+          </button>
+        </>
       )}
     </div>
   );
@@ -106,6 +139,26 @@ const ProfileCard: React.FC<ProfileProps> = ({ profile, member }) => {
   const { name, bio, handle } = profile ?? {};
 
   const picture = ipfsUriToUrl(profile);
+
+  const handleDelegate = async () => {
+    write?.();
+    const mailchainInstance = Mailchain.fromSecretRecoveryPhrase(mailchainSecretRecoveryPhrase);
+    const { data, error } = await mailchainInstance.sendMail({
+      from: mailchainSender,
+      to: [`${member as Address}@ethereum.mailchain.com`],
+      subject: `A delegation just occurred to you`,
+      content: {
+        text: "Delegation",
+        html: `<p>Your lens profile has received voting power!</p>`,
+      },
+    });
+    if (error) {
+      toast.warn("Could not notify proposer");
+      return;
+    }
+
+    console.log({ data });
+  };
 
   return (
     <div className="card w-full bg-base-200 shadow-lg">
@@ -121,7 +174,7 @@ const ProfileCard: React.FC<ProfileProps> = ({ profile, member }) => {
           <p className="py-2">{bio}</p>
           <button
             className="glass btn-block btn-md btn text-primary-focus"
-            onClick={() => write?.()}
+            onClick={() => handleDelegate()}
           >
             delegate
           </button>
