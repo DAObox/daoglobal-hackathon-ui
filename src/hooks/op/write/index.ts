@@ -4,6 +4,7 @@ import { BN, opConfig } from "../op-helpers";
 
 import { useOpCollateral } from "../read";
 import { Action } from "types/op";
+import { DaoAction } from "@aragon/sdk-client";
 
 interface NewOpProposalParams {
   metadata: any;
@@ -23,6 +24,7 @@ export const useNewOpProposal = ({
   const isEnabled = () => {
     return !!(metadata && actions && allowFailureMap && collateral);
   };
+  console.log({ actions });
 
   const { config, status: prepareStatus } = usePrepareContractWrite({
     ...opConfig,
